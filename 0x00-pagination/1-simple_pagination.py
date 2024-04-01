@@ -53,4 +53,4 @@ class Server:
         if page > number_of_pages:
             return []
         start_index, end_index = index_range(page, page_size)
-        return dataset[start_index:end_index]
+        return dataset[start_index:end_index + 1]
