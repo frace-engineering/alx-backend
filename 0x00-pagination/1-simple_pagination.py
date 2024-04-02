@@ -47,10 +47,5 @@ class Server:
         "and greater than 0"
 
         dataset = self.dataset()
-        #number_of_rows = len(dataset)
-        #number_of_pages = math.ceil(number_of_rows / page_size)
-
-        #if page > number_of_pages:
-            #return []
         start_index, end_index = index_range(page, page_size)
         return dataset[start_index:end_index + 1]
