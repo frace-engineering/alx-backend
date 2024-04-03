@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-
+"""
+Create a class that inherits from BaseCaching and is a caching system.
+"""
 from base_caching import BaseCaching
 
 
@@ -20,7 +22,7 @@ class FIFOCache(BaseCaching):
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                # Find the first key inserted into the cache
+                """Find the first key inserted into the cache."""
                 first_key = next(iter(self.cache_data))
                 print("DISCARD: {}".format(first_key))
                 del self.cache_data[first_key]

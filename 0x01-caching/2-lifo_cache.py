@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Create a class that inherits from BaseCaching and is a caching system.
+"""
 
 from base_caching import BaseCaching
 
@@ -20,7 +23,7 @@ class LIFOCache(BaseCaching):
         """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                # Find the last key inserted into the cache
+                """Find the last key inserted into the cache."""
                 last_key = list(self.cache_data.keys())[-1]
                 print("DISCARD: {}".format(last_key))
                 del self.cache_data[last_key]
