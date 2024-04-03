@@ -48,7 +48,7 @@ class Server:
         Args:
         - page: page number of type int.
         - page_size: page size in char of type int.
-        
+
         Return:
             dataset.
         """
