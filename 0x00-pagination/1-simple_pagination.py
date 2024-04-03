@@ -42,9 +42,19 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """
+        Takes two integer arguments.
+
+        Args:
+        - page: page number of type int.
+        - page_size: page size in char of type int.
+        
+        Return:
+            dataset.
+        """
         assert isinstance(page, int) and page > 0, "Page must be int & > 0"
         assert isinstance(page_size, int) and page_size > 0, "Size must be int"
 
-        dataset = self.dataset()
         start_index, end_index = index_range(page, page_size)
-        return dataset[start_index:end_index + 1]
+        dataset = self.dataset()
+        return dataset[start_index:end_index]
