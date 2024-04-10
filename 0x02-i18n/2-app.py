@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Basic flask app"""
-from flask import Flask, render_template, request
+from flask import g, Flask, render_template, request
 from flask_babel import Babel
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ class Config:
 app.config.from_object(Config)
 babel = Babel(app)
 
-"""@babel.localeselector"""
+@babel.localeselector
 def get_locale():
     """Select maching langusge"""
     return request.accept_language.best_match(app.config['LANGUSGE'])
