@@ -15,11 +15,11 @@ class Config:
 app.config.from_object(Config)
 babel = Babel(app)
 
+
 @babel.localeselector
 def get_locale():
     """Select maching langusge"""
     return request.accept_language.best_match(app.config['LANGUSGE'])
-
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
