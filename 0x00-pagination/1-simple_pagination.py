@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """
+1-simple_pagination.py.
 Function that returns the start and end index of a page.
 """
 import csv
