@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 
 class Config:
+    """Configurations for the babel translatiion"""
     LANGUAGE = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -17,8 +18,9 @@ babel = Babel(app)
 
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index():
+    """Render the html page"""
     return render_template('1-index.html')
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run()
