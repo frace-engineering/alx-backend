@@ -19,7 +19,7 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale():
     """Select maching language"""
-    user = getattr(g, user, None)
+    user = getattr(g, 'user', None)
     if user is not None:
         """return the user's set locale"""
         return user.locale
