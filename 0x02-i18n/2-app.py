@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Basic flask app"""
+"""Basic flask app with babel translation"""
 from flask import g, Flask, render_template, request
 from flask_babel import Babel, _
 app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config:
@@ -13,12 +12,14 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+"""Configure the babel app"""
 app.config.from_object(Config)
+babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale():
     """Select maching language"""
+    """Get user attribute from the flask.g module"""
     user = getattr(g, 'user', None)
     if user is not None:
         """return the user's set locale"""
@@ -33,4 +34,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    """Run the app as main"""
+    app.run(host='0.0.0.0', port=5001, debug=True)
