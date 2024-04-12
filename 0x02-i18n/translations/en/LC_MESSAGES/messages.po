@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-12 13:33+0000\n"
-"PO-Revision-Date: 2024-04-12 13:36+0000\n"
+"POT-Creation-Date: 2024-04-12 21:30+0000\n"
+"PO-Revision-Date: 2024-04-12 21:30+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -27,11 +27,15 @@ msgstr ""
 msgid "You are not logged in."
 msgstr ""
 
+#: templates/2-index.html:2 templates/3-index.html:2 templates/4-index.html:2
+msgid "current_locale"
+msgstr "en"
+
 #: templates/2-index.html:6 templates/3-index.html:6 templates/4-index.html:6
 msgid "home_title"
-msgstr ""
+msgstr "Welcome to Holberton"
 
 #: templates/2-index.html:9 templates/3-index.html:9 templates/4-index.html:9
 msgid "home_header"
-msgstr ""
+msgstr "Hello world!"
 

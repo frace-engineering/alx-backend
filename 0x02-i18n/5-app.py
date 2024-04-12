@@ -3,8 +3,6 @@
 from flask import g, Flask, render_template, request
 from flask_babel import Babel, _
 
-app = Flask(__name__)
-babel = Babel(app)
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -21,8 +19,6 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object(Config)
-
 def get_locale():
     """Select prefered language"""
     if 'locale' in request.args:
@@ -34,6 +30,11 @@ def get_locale():
         if user is not None:
             return user.locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app, locale_selector=get_locale)
 
 
 def get_user(user_id):
@@ -55,12 +56,13 @@ def before_request():
 def index():
     """Render the html page"""
     if g.user:
-        welcome_msg = _('You are logged in as %(username)s.') %
-                        {'username': g.user['name']}
+        welcome_msg = _('You are logged in\
+                        as %(username)s.') % {'username': g.user['name']}
     else:
         welcome_msg = _('You are not logged in.')
     locale = get_locale()
-    return render_template('5-index.html', welcome_msg=welcome_msg, locale=locale)
+    return render_template('5-index.html', welcome_msg=welcome_msg,
+                           current_locale=locale)
 
 
 if __name__ == '__main__':

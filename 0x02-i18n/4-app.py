@@ -3,9 +3,6 @@
 from flask import g, Flask, render_template, request
 from flask_babel import Babel, _
 
-app = Flask(__name__)
-babel = Babel(app)
-
 
 class Config:
     """Babel translation configuration class"""
@@ -13,8 +10,6 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-
-app.config.from_object(Config)
 
 def get_locale():
     """Select prefered language"""
@@ -29,13 +24,19 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app, locale_selector=get_locale)
+
+
 @app.route('/', methods=['GET', 'POST'], strict_slashes=False)
 def index(locale=None):
     """Render the html page"""
     locale = get_locale()
     ht = 'Welcome to Holberton'
     hh = 'Hello world'
-    return render_template('4-index.html', home_title=ht, home_header=hh, locale=locale)
+    return render_template('4-index.html', home_title=ht, home_header=hh,
+                           current_locale=locale)
 
 
 if __name__ == '__main__':
