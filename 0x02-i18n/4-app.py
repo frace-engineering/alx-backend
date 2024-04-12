@@ -18,18 +18,24 @@ app.config.from_object(Config)
 
 def get_locale():
     """Select prefered language"""
-    user = getattr(g, 'user', None)
-    if user is not None:
-        return user.locale
+    if 'locale' in request.args:
+        locale = request.args['locale']
+        if locale in app.config['LANGUAGES']:
+            return locale
+    else:
+        user = getattr(g, 'user', None)
+        if user is not None:
+            return user.locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/')
-def index():
+@app.route('/', methods=['GET', 'POST'], strict_slashes=False)
+def index(locale=None):
     """Render the html page"""
+    locale = get_locale()
     ht = 'Welcome to Holberton'
     hh = 'Hello world'
-    return render_template('3-index.html', home_title=ht, home_header=hh)
+    return render_template('4-index.html', home_title=ht, home_header=hh, locale=locale)
 
 
 if __name__ == '__main__':
