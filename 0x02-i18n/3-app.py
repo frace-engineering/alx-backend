@@ -11,7 +11,7 @@ babel = Babel(app)
 class Config:
     """Babel translation configuration class"""
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "fr"
+    BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
@@ -29,10 +29,10 @@ def get_locale():
 @app.route('/')
 def index():
     """Render the html page"""
-    home_title = 'Welcome to Holberton'
-    home_header = 'Hello world'
-    return render_template('3-index.html', home_title=home_title, home_header=home_header)
+    ht = 'Welcome to Holberton'
+    hh = 'Hello world'
+    return render_template('3-index.html', home_title=ht, home_header=hh)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run()

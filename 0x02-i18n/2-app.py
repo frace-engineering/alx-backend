@@ -30,9 +30,11 @@ def get_locale():
 @app.route('/')
 def index():
     """Render the html page"""
-    return render_template('2-index.html')
+    ht = 'Welcome to Holberton'
+    hh = 'Hwllo world'
+    return render_template('2-index.html', home_title=ht, home_header=hh)
 
 
 if __name__ == '__main__':
     """Run the app as main"""
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run()
