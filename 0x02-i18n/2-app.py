@@ -11,12 +11,11 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-@babel.localeselector
 def get_locale():
     """
     Select the appropriate language for translation
-    
-    Return: 
+
+    Return:
         locale.
     """
     user = getattr(g, 'user', None)
