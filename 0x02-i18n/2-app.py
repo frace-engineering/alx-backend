@@ -16,7 +16,7 @@ class Config:
 """Configure the babel app"""
 app.config.from_object(Config)
 
-@babel.localeselector
+
 def get_locale():
     """Select maching language"""
     """Get user attribute from the flask.g module"""
@@ -37,4 +37,4 @@ def index():
 
 if __name__ == '__main__':
     """Run the app as main"""
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -4,7 +4,6 @@ from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
 app = Flask(__name__)
-app.jinja_env.autoescape = True
 babel = Babel(app)
 
 
@@ -17,7 +16,6 @@ class Config:
 
 app.config.from_object(Config)
 
-@babel.localeselector
 def get_locale():
     """Select prefered language"""
     user = getattr(g, 'user', None)
@@ -35,4 +33,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000, debug=True)
