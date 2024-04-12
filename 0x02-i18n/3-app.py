@@ -17,13 +17,13 @@ class Config:
 
 app.config.from_object(Config)
 
+
 def get_locale():
     """Select prefered language"""
     user = getattr(g, 'user', None)
     if user is not None:
         return user.locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
 
 
 @app.route('/')
