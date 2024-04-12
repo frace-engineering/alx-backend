@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 app = Flask(__name__)
+babel = Babel(app)
 
 
 class Config:
@@ -13,12 +14,14 @@ class Config:
 
 
 app.config.from_object(Config)
-babel = Babel(app)
 
 
 @babel.localeselector
 def get_locale():
     """Select prefered language"""
+    user = getattr(g, user, None)
+    if user is not None:
+        return user.locale
     return request.accept_language.best_match(app.config['LANGUAGES'])
 
 
