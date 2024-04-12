@@ -2,6 +2,7 @@
 """Basic flask app with babel translation support"""
 from flask import g, Flask, render_template, request
 from flask_babel import Babel, _
+app = Flask(__name__)
 
 
 class Config:
@@ -24,10 +25,9 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
 """Instantaite babel with locale_selector()"""
 babel = Babel(app, locale_selector=get_locale)
+app.config.from_object(Config)
 
 
 @app.route('/')
