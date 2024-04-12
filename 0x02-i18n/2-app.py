@@ -3,6 +3,7 @@
 from flask import g, Flask, render_template, request
 from flask_babel import Babel, _
 app = Flask(__name__)
+babel = Babel(app)
 
 
 class Config:
@@ -14,9 +15,8 @@ class Config:
 
 """Configure the babel app"""
 app.config.from_object(Config)
-babel = Babel(app)
 
-
+@babel.localeselector
 def get_locale():
     """Select maching language"""
     """Get user attribute from the flask.g module"""

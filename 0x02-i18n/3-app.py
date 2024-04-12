@@ -17,7 +17,7 @@ class Config:
 
 app.config.from_object(Config)
 
-
+@babel.localeselector
 def get_locale():
     """Select prefered language"""
     user = getattr(g, 'user', None)
