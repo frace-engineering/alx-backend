@@ -33,10 +33,7 @@ babel = Babel(app, locale_selector=get_locale)
 def index(locale=None):
     """Render the html page"""
     locale = get_locale()
-    ht = 'Welcome to Holberton'
-    hh = 'Hello world'
-    return render_template('4-index.html', home_title=ht, home_header=hh,
-                           current_locale=locale)
+    return render_template('4-index.html', current_locale=locale)
 
 
 if __name__ == '__main__':
